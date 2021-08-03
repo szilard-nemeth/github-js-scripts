@@ -14,13 +14,12 @@
     let yetusComments = [];
     for (let i = 0; i < comments.length; ++i) {
         let comment = comments[i]
-        let yetus = Array.from(comment.querySelectorAll("a"))
-            .find(link => link.textContent.includes("hadoop-yetus"));
-        if (yetus) {
-            yetusComments.push(comment.querySelector(".edit-comment-hide"));
-        }
+        comment.querySelectorAll("a").forEach(link => {
+            if (link.textContent.includes("hadoop-yetus")) {
+                yetusComments.push(comment.querySelector(".edit-comment-hide"));
+            }
+        });
     }
-
     let visible = true;
     const gh_header_actions = document.querySelector('.gh-header-actions')
     let toggleButton = document.createElement("button");
