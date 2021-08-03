@@ -27,16 +27,10 @@
             yetusComments.push(comment.querySelector(".edit-comment-hide"));
         }
     }
-    
-    var visible = true;
+
+    let visible = true;
     toggle_comments.on('click', function() {
-        var displayStyle
-        if (visible) {
-            displayStyle = "none"
-        } else {
-            displayStyle = "block"
-        }
-        yetusComments.forEach(div => div.style.display = displayStyle);
-        visible = !visible
+        visible = !visible;
+        yetusComments.forEach(div => div.style.display = (visible ? "block" : "none"));
     });
 })();
