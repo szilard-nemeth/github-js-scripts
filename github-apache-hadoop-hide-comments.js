@@ -18,14 +18,16 @@
 
 
     const comments = document.querySelectorAll(".timeline-comment")
-    const yetusComments = [...comments].filter(comment => {
-        const links = comment.querySelectorAll("a")
-        const filteredLinks = [...links].filter(link => link.textContent.includes("hadoop-yetus"))
-        if (filteredLinks.length > 0) {
-            return comment;
+    let yetusComments = [];
+    for (let c in comments) {
+        let comment = comments[c];
+        let yetus   = comment.querySelectorAll("a")
+            .find(link => link.textContent.includes("hadoop-yetus"));
+        if (yetus) {
+            yetusComments.push(comment.querySelector(".edit-comment-hide"));
         }
-    }).map(c => c.querySelector(".edit-comment-hide"))
-
+    }
+    
     var visible = true;
     toggle_comments.on('click', function() {
         var displayStyle
