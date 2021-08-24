@@ -7,7 +7,6 @@
 // @include      /https?:\/\/github\.com.*\/apache\/hadoop\/.*/
 // @grant        none
 // ==/UserScript==
-
 (function() {
     'use strict';
     const comments = document.querySelectorAll(".timeline-comment")
@@ -20,15 +19,16 @@
             }
         });
     }
+
     let visible = true;
-    const gh_header_actions = document.querySelector('.gh-header-actions')
+    const sidebar = document.querySelector('#partial-discussion-sidebar')
     let toggleButton = document.createElement("button");
     toggleButton.innerHTML = "Toggle comments"
     toggleButton.id = "toggle-comments";
-    toggleButton.className = "btn btn-sm float-none"
+    toggleButton.className = "btn btn-block btn-sm"
     toggleButton.addEventListener('click', function() {
         visible = !visible;
         yetusComments.forEach(div => div.style.display = (visible ? "block" : "none"));
     });
-    gh_header_actions.appendChild(toggleButton)
+    sidebar.appendChild(toggleButton)
 })();
